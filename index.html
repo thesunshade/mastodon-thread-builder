@@ -15,8 +15,9 @@
     <div>
         <h1>Build a Mastodon Thread</h1>
         <div class="page-heaer-row">
-            <div>Number of posts: <span id="totalNumberOfPosts"></span></div>
+            <div>Number of posts: <span id="totalNumberOfPosts"></span>*</div>
             <button id="copyAll" class="button">copy all to clipboard</button>
+            <div> Copied posts will include a counter, e.g. (2/5)</div>
         </div>
         <section class="character-counter-container">
             <form>
@@ -117,11 +118,12 @@
             </form>
         </section>
 
+        <div>* Number of posts is counted based on the highest post with content in it. If you leave a post blank within
+            a set of posts, that's consiere to be intentional on your part.
+        </div>
 
-    </div>
 
-
-    <script type="module" src="index.js"></script>
+        <script type="module" src="index.js"></script>
 </body>
 
 </html>

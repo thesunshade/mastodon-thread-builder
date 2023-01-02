@@ -4,10 +4,10 @@ const textAreas = document.querySelectorAll(".textarea");
 const typedCharactersElements = document.querySelectorAll(".typed-characters");
 // console.log(typedCharactersElements);
 const copyButtons = document.querySelectorAll(".copy");
-const totalNumberOfPosts = document.querySelector("#totalNumberOfPosts");
+const totalNumberOfPostsElement = document.querySelector("#totalNumberOfPosts");
 const copyAllButton = document.querySelector("#copyAll");
 
-totalNumberOfPosts.innerHTML = 0;
+// totalNumberOfPosts.innerHTML = 0;
 
 // initialize the page
 for (let x = 0; x < textAreas.length; x++) {
@@ -44,9 +44,21 @@ function countCharacters(postNumber) {
   } else {
     thisTextArea.classList.remove("warning");
   }
+
+  checkNumberOfPosts();
 }
 
-function checkNumberOfPosts() {}
+function checkNumberOfPosts() {
+  let numberOfPosts = 0;
+  for (let x = 0; x < textAreas.length; x++) {
+    if (textAreas[x].value.length > 0) {
+      numberOfPosts++;
+      // console.log(numberOfPosts)
+    }
+    totalNumberOfPostsElement.textContent = numberOfPosts;
+    console.log(totalNumberOfPostsElement);
+  }
+}
 
 for (let x = 0; x < textAreas.length; x++) {
   textAreas[x].addEventListener("input", event => {

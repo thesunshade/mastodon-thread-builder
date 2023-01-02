@@ -71,7 +71,7 @@ for (let x = 0; x < textAreas.length; x++) {
     countCharacters(event.target.attributes.postnumber.value);
   });
   copyButtons[x].addEventListener("click", event => {
-    let postContent = `\n(${x}/${numberOfPosts})`;
+    let postContent = `\n(${x + 1}/${numberOfPosts})`;
     navigator.clipboard.writeText(textAreas[x].value + postContent);
   });
   trashButtons[x].addEventListener("click", event => {

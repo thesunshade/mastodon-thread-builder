@@ -56,14 +56,12 @@ h1 {
 
 
 label {
-    /* display: block; */
     font-weight: 600;
-    /* margin-bottom: 1rem; */
 }
 
 .textarea {
     display: block;
-    width: 90%;
+    width: 95%;
     padding: 1rem;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 10px;

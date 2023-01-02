@@ -1,8 +1,6 @@
 let maximumCharacters = 500;
-// const textAreaElement = document.querySelector("#message");
 const textAreas = document.querySelectorAll(".textarea");
 const typedCharactersElements = document.querySelectorAll(".typed-characters");
-// console.log(typedCharactersElements);
 const copyButtons = document.querySelectorAll(".copy");
 const trashButtons = document.querySelectorAll(".trash-button");
 
@@ -43,6 +41,12 @@ function countCharacters(postNumber) {
     thisTypedCharactersElement.classList.add("text-danger");
   } else {
     thisTypedCharactersElement.classList.remove("text-danger");
+  }
+
+  if (thisTextArea.value.length === 0) {
+    thisTextArea.classList.add("empty-post");
+  } else {
+    thisTextArea.classList.remove("empty-post");
   }
 
   if (typedCharacters > maximumCharacters) {

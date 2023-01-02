@@ -91,6 +91,11 @@ label {
     /* width: 100%; */
 }
 
+.icon-button {
+    background-color: transparent;
+    border: none;
+}
+
 .button:hover {
     background-color: #a100d8;
 }

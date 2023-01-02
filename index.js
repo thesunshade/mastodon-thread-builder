@@ -73,6 +73,10 @@ for (let x = 0; x < textAreas.length; x++) {
   copyButtons[x].addEventListener("click", event => {
     let postContent = `\n(${x + 1}/${numberOfPosts})`;
     navigator.clipboard.writeText(textAreas[x].value + postContent);
+    copyButtons[x].innerText = "copied!";
+    setTimeout(() => {
+      copyButtons[x].innerText = "copy";
+    }, 1500);
   });
   trashButtons[x].addEventListener("click", event => {
     console.log(textAreas[x].textContent);
@@ -94,4 +98,8 @@ copyAllButton.addEventListener("click", event => {
     }
   }
   navigator.clipboard.writeText(allAreas);
+  copyAllButton.innerText = "copied!";
+  setTimeout(() => {
+    copyAllButton.innerText = "copy all";
+  }, 1500);
 });

@@ -122,7 +122,20 @@ copyAllButton.addEventListener("click", event => {
   let allAreas = "";
   for (let x = 0; x < textAreas.length; x++) {
     if (textAreas[x].value.length > 0) {
-      allAreas += textAreas[x].value;
+      const numeratorText = `(${x + 1}/${numberOfPosts})`;
+      let postContent = textAreas[x].value;
+      switch (numerator) {
+        case "top":
+          postContent = numeratorText + "\n" + postContent;
+          break;
+        case "bottom":
+          postContent = postContent + "\n" + numeratorText;
+          break;
+        case "manual":
+          break;
+      }
+
+      allAreas += postContent;
       if (x < textAreas.length - 1) {
         allAreas += `\n\n(${x + 1}/${numberOfPosts})------------------------\n\n`;
       }

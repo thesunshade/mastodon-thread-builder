@@ -1,22 +1,13 @@
 let baseMaximumCharacters = 500;
-let maximumCharacters = baseMaximumCharacters;
+let maximumCharacters;
 const textAreas = document.querySelectorAll(".textarea");
 const typedCharactersElements = document.querySelectorAll(".typed-characters");
 const copyButtons = document.querySelectorAll(".copy");
 const trashButtons = document.querySelectorAll(".trash-button");
-
+const numeratorSelector = document.getElementById("numerator");
 const totalNumberOfPostsElement = document.querySelector("#totalNumberOfPosts");
 const copyAllButton = document.querySelector("#copyAll");
 let numberOfPosts = 0;
-
-// initialize the page
-function recountAllTextAreas() {
-  for (let x = 0; x < textAreas.length; x++) {
-    countCharacters(x);
-  }
-}
-recountAllTextAreas();
-const numeratorSelector = document.getElementById("numerator");
 
 let numerator = numeratorSelector.value;
 numeratorSelector.addEventListener("change", () => {
@@ -29,6 +20,19 @@ numeratorSelector.addEventListener("change", () => {
   }
   recountAllTextAreas();
 });
+
+// initialize the page
+function recountAllTextAreas() {
+  if (numerator === "top" || numerator === "bottom") {
+    maximumCharacters = baseMaximumCharacters - 6;
+  } else {
+    maximumCharacters = baseMaximumCharacters;
+  }
+  for (let x = 0; x < textAreas.length; x++) {
+    countCharacters(x);
+  }
+}
+recountAllTextAreas();
 
 function countCharacters(postNumber) {
   let typedCharacters = 0;

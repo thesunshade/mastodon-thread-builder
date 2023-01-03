@@ -1,4 +1,5 @@
-let maximumCharacters = 500;
+let baseMaximumCharacters = 500;
+let maximumCharacters = baseMaximumCharacters;
 const textAreas = document.querySelectorAll(".textarea");
 const typedCharactersElements = document.querySelectorAll(".typed-characters");
 const copyButtons = document.querySelectorAll(".copy");
@@ -7,16 +8,27 @@ const trashButtons = document.querySelectorAll(".trash-button");
 const totalNumberOfPostsElement = document.querySelector("#totalNumberOfPosts");
 const copyAllButton = document.querySelector("#copyAll");
 let numberOfPosts = 0;
-let addCountAtEndOfPost = true;
-
-if (addCountAtEndOfPost) {
-  maximumCharacters = maximumCharacters - 6;
-}
 
 // initialize the page
-for (let x = 0; x < textAreas.length; x++) {
-  countCharacters(x);
+function recountAllTextAreas() {
+  for (let x = 0; x < textAreas.length; x++) {
+    countCharacters(x);
+  }
 }
+recountAllTextAreas();
+const numeratorSelector = document.getElementById("numerator");
+
+let numerator = numeratorSelector.value;
+numeratorSelector.addEventListener("change", () => {
+  numerator = numeratorSelector.value;
+  console.log(numerator);
+  if (numerator === "top" || numerator === "bottom") {
+    maximumCharacters = baseMaximumCharacters - 6;
+  } else {
+    maximumCharacters = baseMaximumCharacters;
+  }
+  recountAllTextAreas();
+});
 
 function countCharacters(postNumber) {
   let typedCharacters = 0;
@@ -75,8 +87,19 @@ for (let x = 0; x < textAreas.length; x++) {
     countCharacters(event.target.attributes.postnumber.value);
   });
   copyButtons[x].addEventListener("click", event => {
-    let postContent = `\n(${x + 1}/${numberOfPosts})`;
-    navigator.clipboard.writeText(textAreas[x].value + postContent);
+    const numeratorText = `(${x + 1}/${numberOfPosts})`;
+    let postContent = textAreas[x].value;
+    switch (numerator) {
+      case "top":
+        postContent = numeratorText + "\n" + postContent;
+        break;
+      case "bottom":
+        postContent = postContent + "\n" + numeratorText;
+        break;
+      case "manual":
+        break;
+    }
+    navigator.clipboard.writeText(postContent);
     copyButtons[x].innerText = "copied!";
     setTimeout(() => {
       copyButtons[x].innerText = "copy";

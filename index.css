@@ -51,12 +51,16 @@ h1 {
     gap: 1rem;
     align-items: center;
     margin: .4rem auto;
+    padding-left: .5rem;
 }
-
 
 
 label {
     font-weight: 600;
+}
+
+.header-row label {
+    color: var(--primary-dark);
 }
 
 .textarea {

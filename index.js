@@ -91,7 +91,7 @@ for (let x = 0; x < textAreas.length; x++) {
     countCharacters(event.target.attributes.postnumber.value);
   });
   copyButtons[x].addEventListener("click", event => {
-    const numeratorText = `(${x + 1}/${numberOfPosts})`;
+    const numeratorText = `${x + 1}/${numberOfPosts}`;
     let postContent = textAreas[x].value;
     switch (numerator) {
       case "top":
@@ -122,7 +122,7 @@ copyAllButton.addEventListener("click", event => {
   let allAreas = "";
   for (let x = 0; x < textAreas.length; x++) {
     if (textAreas[x].value.length > 0) {
-      const numeratorText = `(${x + 1}/${numberOfPosts})`;
+      const numeratorText = `${x + 1}/${numberOfPosts}`;
       let postContent = textAreas[x].value;
       switch (numerator) {
         case "top":

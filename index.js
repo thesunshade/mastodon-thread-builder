@@ -1,4 +1,5 @@
-let baseMaximumCharacters = 500;
+const BASE_MAXIMUM_CHARACTERS = 500;
+const NUMERATOR_COUNTER_LENGTH = 4;
 let maximumCharacters;
 const textAreas = document.querySelectorAll(".textarea");
 const typedCharactersElements = document.querySelectorAll(".typed-characters");
@@ -14,9 +15,9 @@ numeratorSelector.addEventListener("change", () => {
   numerator = numeratorSelector.value;
   console.log(numerator);
   if (numerator === "top" || numerator === "bottom") {
-    maximumCharacters = baseMaximumCharacters - 6;
+    maximumCharacters = BASE_MAXIMUM_CHARACTERS - NUMERATOR_COUNTER_LENGTH;
   } else {
-    maximumCharacters = baseMaximumCharacters;
+    maximumCharacters = BASE_MAXIMUM_CHARACTERS;
   }
   recountAllTextAreas();
 });
@@ -24,9 +25,9 @@ numeratorSelector.addEventListener("change", () => {
 // initialize the page
 function recountAllTextAreas() {
   if (numerator === "top" || numerator === "bottom") {
-    maximumCharacters = baseMaximumCharacters - 6;
+    maximumCharacters = BASE_MAXIMUM_CHARACTERS - NUMERATOR_COUNTER_LENGTH;
   } else {
-    maximumCharacters = baseMaximumCharacters;
+    maximumCharacters = BASE_MAXIMUM_CHARACTERS;
   }
   for (let x = 0; x < textAreas.length; x++) {
     countCharacters(x);
